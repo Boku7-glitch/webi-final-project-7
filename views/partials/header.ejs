@@ -1,0 +1,74 @@
+<header class="container">
+    <div class="username">
+        <p>
+            <%= email %>
+        </p>
+    </div>
+    <div class="nav-wrapper">
+        <nav class="main-nav">
+            <ul class="nav-list-wrapper">
+                <li><a class="nav-link" href="/">Blog</a></li>
+                <li><a class="nav-link" href="/">About</a></li>
+                <li><a class="nav-link" href="/">Newsletter</a></li>
+                <% if (email) { %>
+                <li><a class="nav-link" href="/blogs/new">Create New Blog</a></li>
+                <li><a style="color: #6e0000" class="nav-link" href="/logout">Logout</a></li>
+                <% } %>
+                <button id="toggle-dark-mode" class="dark-mode-toggle">🌙 Dark Mode</button>
+            </ul>
+        </nav>
+
+        <div class="burger" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+            <a class="nav-link" href="/">Blog</a>
+            <a class="nav-link" href="/">Projects</a>
+            <a class="nav-link" href="/">About</a>
+            <a class="nav-link" href="/">Newsletter</a>
+            <a style="color: #6e0000" class="nav-link" href="/logout">Logout</a>
+            <button id="toggle-dark-mode" class="dark-mode-toggle">🌙 Dark Mode</button>
+        <figure class="close-btn-wrapper" id="close-btn-wrapper">
+            <img src="/images/close-icon.svg" alt="">
+        </figure>
+    </div>
+</header>
+
+<script>
+    const burger = document.getElementById('burger');
+    const closeBtn = document.getElementById('close-btn-wrapper');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const toggleBtn = document.getElementById('toggle-dark-mode');
+
+    burger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('show');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('show');
+    });
+
+    // Dark mode გადართვა
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        toggleBtn.textContent = '☀️ Light Mode';
+    } else {
+        toggleBtn.textContent = '🌙 Dark Mode';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        const isDark = document.body.classList.toggle('dark-mode');
+
+        if (isDark) {
+            localStorage.setItem('theme', 'dark');
+            toggleBtn.textContent = '☀️ Light Mode';
+        } else {
+            localStorage.setItem('theme', 'light');
+            toggleBtn.textContent = '🌙 Dark Mode';
+        }
+    });
+</script>
