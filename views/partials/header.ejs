@@ -31,7 +31,7 @@
             <a class="nav-link" href="/">About</a>
             <a class="nav-link" href="/">Newsletter</a>
             <a style="color: #6e0000" class="nav-link" href="/logout">Logout</a>
-            <button id="toggle-dark-mode" class="dark-mode-toggle">🌙 Dark Mode</button>
+            <button id="toggle-dark-mode" class="dark-mode-toggle">🌙</button>
         <figure class="close-btn-wrapper" id="close-btn-wrapper">
             <img src="/images/close-icon.svg" alt="">
         </figure>
@@ -52,12 +52,11 @@
         mobileMenu.classList.toggle('show');
     });
 
-    // Dark mode გადართვა
     if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
-        toggleBtn.textContent = '☀️ Light Mode';
+        toggleBtn.textContent = '☀️';
     } else {
-        toggleBtn.textContent = '🌙 Dark Mode';
+        toggleBtn.textContent = '🌙';
     }
 
     toggleBtn.addEventListener('click', () => {
@@ -65,10 +64,10 @@
 
         if (isDark) {
             localStorage.setItem('theme', 'dark');
-            toggleBtn.textContent = '☀️ Light Mode';
+            toggleBtn.textContent = '☀️';
         } else {
             localStorage.setItem('theme', 'light');
-            toggleBtn.textContent = '🌙 Dark Mode';
+            toggleBtn.textContent = '🌙';
         }
     });
 </script>
